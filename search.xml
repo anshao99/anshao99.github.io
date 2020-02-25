@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>React-ui库使用</title>
+      <link href="/2020/02/25/React-ui%E5%BA%93%E4%BD%BF%E7%94%A8/"/>
+      <url>/2020/02/25/React-ui%E5%BA%93%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-最流行的开源React-UI组件库"><a href="#1-最流行的开源React-UI组件库" class="headerlink" title="1.最流行的开源React UI组件库"></a>1.最流行的开源React UI组件库</h2><pre><code>material-ui(国外)官网: http://www.material-ui.com/#/github: https://github.com/callemall/material-uiant-design(国内蚂蚁金服)官网: https://ant.design/github: https://github.com/ant-design/ant-design/</code></pre><h2 id="2-ui库"><a href="#2-ui库" class="headerlink" title="2.ui库"></a>2.ui库</h2><pre><code>ant design mobile (mobile)ant design (pc)   yarn add antd</code></pre><h1 id="全局引入"><a href="#全局引入" class="headerlink" title="全局引入"></a>全局引入</h1><pre><code>index.js    import &apos;antd/dist/antd.css&apos;;   在组件里引入组件就可以使用了，例如组件里使用button   import { Button } from &apos;antd&apos;;   &lt;Button type=&quot;primary&quot;&gt;xxx&lt;/Button&gt;</code></pre><h1 id="按需加载"><a href="#按需加载" class="headerlink" title="按需加载"></a>按需加载</h1><pre><code>    1)    yarn add react-app-rewired customize-crareact-app-rewired   不用弹射就可以配置webpackcustomize-cra  自定义脚手架环境    2) package.json            ....          &quot;scripts&quot;: {                &quot;start&quot;: &quot;react-app-rewired start&quot;,                &quot;build&quot;: &quot;react-app-rewired build&quot;,                &quot;test&quot;: &quot;react-app-rewired test&quot;,                &quot;eject&quot;: &quot;react-scripts eject&quot;              },            ...     3) 项目的根目录建立一个配置文件         config-overrides.js        4) yarn add babel-plugin-import     5) config-overrides.js  文件里       const { override, fixBabelImports } = require(&apos;customize-cra&apos;);        module.exports = override(               fixBabelImports(&apos;import&apos;, {                 libraryName: &apos;antd&apos;,                 libraryDirectory: &apos;es&apos;,                 style: &apos;css&apos;,               }),             );      6)自定义主题  less less-loader </code></pre><h2 id="3-react-cli-环境下用-指向src"><a href="#3-react-cli-环境下用-指向src" class="headerlink" title="3.react cli 环境下用@指向src"></a>3.react cli 环境下用@指向src</h2><p> const { addWebpackAlias } = require(‘customize-cra’);<br>  const {resolve} = require(‘path’)<br>  module.exports=overrid({<br>  ….<br>    addWebpackAlias({<br>              ‘@’: resolve(‘src’)<br>          })<br>  …<br>})</p><h2 id="4-配置装饰器"><a href="#4-配置装饰器" class="headerlink" title="4.配置装饰器"></a>4.配置装饰器</h2><pre><code>1) @babel/plugin-proposal-decorators2) const { addDecoratorsLegacy } = require(&apos;customize-cra&apos;);3) module.exports=overrid({      addDecoratorsLegacy()    })4)    @高阶组件(参数)    class 组件 extends Component {    }    等价于  高阶组件(参数)(组件)</code></pre><h2 id="5-安装依赖次序"><a href="#5-安装依赖次序" class="headerlink" title="5. 安装依赖次序"></a>5. 安装依赖次序</h2><pre><code>1）yarn add antd   cnpm i antd --save2）    yarn add react-app-rewired customize-cra3）yarn add babel-plugin-import4）yarn add less less-loader  如果需要更改主题5） @babel/plugin-proposal-decorators  是为了用装饰器</code></pre><p>3.配置代理<br>    src/setupProxy.js<br>    http-proxy-middleware<br>    安装 yarn add http-proxy-middleware -D<br>    const {createProxyMiddleware} = require(‘http-proxy-middleware’)</p><p>module.exports = function(app) {<br>    app.use(‘/api’,<br>    createProxyMiddleware({<br>              target: ‘<a href="https://cnodejs.org/api/v1&#39;" target="_blank" rel="noopener">https://cnodejs.org/api/v1&#39;</a>,<br>              changeOrigin: true,<br>              pathRewrite:{<br>                  “^/api”:”/“<br>              }<br>            }<br>         ));<br>}</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Session VS Cookie</title>
       <link href="/2020/02/25/Session%20VS%20Cookie/"/>
       <url>/2020/02/25/Session%20VS%20Cookie/</url>
